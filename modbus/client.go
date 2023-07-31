@@ -17,7 +17,6 @@ const (
 
 type Client struct {
 	modbus.Client
-	logger *Logger
 }
 
 func NewTCPClientHandler(address string, to time.Duration, slaveId byte) *modbus.TCPClientHandler {
@@ -82,4 +81,40 @@ func NewClient(tt TransportType, address string, to time.Duration, slaveId byte)
 	return &Client{
 		Client: modbus.NewClient(handler),
 	}, nil
+}
+
+func ParseToUint16Array(bytes []byte) ([]uint16, error) {
+	data := make([]uint16, 0)
+
+	for i := range bytes {
+		if i%2 == 1 {
+			firstInt := uint16(bytes[i-1])
+			secondInt := uint16(bytes[i])
+
+			data = append(data, firstInt*256+secondInt)
+		}
+	}
+
+	return data, nil
+}
+
+func ParseToBitArray(bytes []byte) ([]byte, error) {
+	data := make([]byte, 0)
+
+	for _, b := range bytes {
+		data = append(data, reverseByte(b)...)
+	}
+
+	return data, nil
+}
+
+func reverseByte(b byte) []byte {
+	bits := make([]uint8, 8)
+
+	for i := range bits {
+		bits[i] = b & 00000001
+		b >>= 1
+	}
+
+	return bits
 }
