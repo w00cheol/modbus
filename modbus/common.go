@@ -4,6 +4,23 @@ type Datum struct {
 	Data any
 }
 
+type (
+	Logger interface {
+		Printf(format string, v ...any)
+		Println(v ...any)
+	}
+
+	DummyLogger struct{}
+)
+
+func (*DummyLogger) Printf(format string, v ...any) { return }
+func (*DummyLogger) Println(v ...any)               { return }
+
+var (
+	DEBUG Logger = new(DummyLogger)
+	ERROR Logger = new(DummyLogger)
+)
+
 type TransportType uint
 
 const (

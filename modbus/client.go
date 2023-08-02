@@ -47,7 +47,7 @@ func (mb *Client) returnRegisterByType(data []byte) (results *Datum) {
 func (mb *Client) ReadCoils(address uint16, quantity uint16) (results *Datum, err error) {
 	data, err := mb.client.ReadCoils(address, quantity)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -57,7 +57,7 @@ func (mb *Client) ReadCoils(address uint16, quantity uint16) (results *Datum, er
 func (mb *Client) WriteSingleCoil(address uint16, value uint16) (results *Datum, err error) {
 	data, err := mb.client.WriteSingleCoil(address, value)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -67,7 +67,7 @@ func (mb *Client) WriteSingleCoil(address uint16, value uint16) (results *Datum,
 func (mb *Client) WriteMultipleCoils(address uint16, quantity uint16, value []byte) (results *Datum, err error) {
 	data, err := mb.client.WriteMultipleCoils(address, quantity, value)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -77,7 +77,7 @@ func (mb *Client) WriteMultipleCoils(address uint16, quantity uint16, value []by
 func (mb *Client) ReadDiscreteInputs(address uint16, quantity uint16) (results *Datum, err error) {
 	data, err := mb.client.ReadDiscreteInputs(address, quantity)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -87,7 +87,7 @@ func (mb *Client) ReadDiscreteInputs(address uint16, quantity uint16) (results *
 func (mb *Client) ReadHoldingRegisters(address uint16, quantity uint16) (results *Datum, err error) {
 	data, err := mb.client.ReadHoldingRegisters(address, quantity)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -97,7 +97,7 @@ func (mb *Client) ReadHoldingRegisters(address uint16, quantity uint16) (results
 func (mb *Client) WriteSingleRegister(address uint16, value uint16) (results *Datum, err error) {
 	data, err := mb.client.WriteSingleRegister(address, value)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -107,7 +107,7 @@ func (mb *Client) WriteSingleRegister(address uint16, value uint16) (results *Da
 func (mb *Client) WriteMultipleRegisters(address uint16, quantity uint16, value []byte) (results *Datum, err error) {
 	data, err := mb.client.WriteMultipleRegisters(address, quantity, value)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 
@@ -117,7 +117,7 @@ func (mb *Client) WriteMultipleRegisters(address uint16, quantity uint16, value 
 func (mb *Client) ReadInputRegisters(address uint16, quantity uint16) (results *Datum, err error) {
 	data, err := mb.client.ReadInputRegisters(address, quantity)
 	if err != nil {
-		NewLogger().Error(err)
+		ERROR.Println(err)
 		return nil, err
 	}
 

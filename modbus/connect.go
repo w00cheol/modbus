@@ -11,7 +11,7 @@ func NewTCPClientHandler(address string, to time.Duration, slaveId byte) *modbus
 	tcpHandler := modbus.NewTCPClientHandler(address)
 	tcpHandler.Timeout = to
 	tcpHandler.SlaveId = slaveId
-	NewLogger().Debug("Init TCP Handler")
+	DEBUG.Println("Init TCP Handler")
 
 	return tcpHandler
 }
@@ -20,7 +20,7 @@ func NewRTUClientHandler(address string, to time.Duration, slaveId byte) *modbus
 	rtuHandler := modbus.NewRTUClientHandler(address)
 	rtuHandler.Timeout = to
 	rtuHandler.SlaveId = slaveId
-	NewLogger().Debug("Init RTU Handler")
+	DEBUG.Println("Init RTU Handler")
 
 	return rtuHandler
 }
@@ -29,7 +29,7 @@ func NewASCIIClientHandler(address string, to time.Duration, slaveId byte) *modb
 	asciiHandler := modbus.NewASCIIClientHandler(address)
 	asciiHandler.Timeout = to
 	asciiHandler.SlaveId = slaveId
-	NewLogger().Debug("Init ASCII Handler")
+	DEBUG.Println("Init ASCII Handler")
 
 	return asciiHandler
 }
@@ -43,7 +43,7 @@ func NewClient(tt TransportType, address string, to time.Duration, slaveId byte,
 			return nil, err
 		}
 		handler = tcpHandler
-		NewLogger().Debug("Handler TCP connect")
+		DEBUG.Println("Handler TCP connect")
 
 	} else if tt == RTU {
 		rtuHandler := NewRTUClientHandler(address, to, slaveId)
@@ -51,7 +51,7 @@ func NewClient(tt TransportType, address string, to time.Duration, slaveId byte,
 			return nil, err
 		}
 		handler = rtuHandler
-		NewLogger().Debug("Handler RTU connect")
+		DEBUG.Println("Handler RTU connect")
 
 	} else if tt == ASCII {
 		asciiHandler := NewASCIIClientHandler(address, to, slaveId)
@@ -59,10 +59,10 @@ func NewClient(tt TransportType, address string, to time.Duration, slaveId byte,
 			return nil, err
 		}
 		handler = asciiHandler
-		NewLogger().Debug("Handler ASCII connect")
+		DEBUG.Println("Handler ASCII connect")
 
 	} else {
-		NewLogger().Error(errors.New("Invalid TransportType"))
+		ERROR.Println("Invalid TransportType")
 		return nil, errors.New("Invalid TransportType")
 	}
 

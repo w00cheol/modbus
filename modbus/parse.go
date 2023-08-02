@@ -2,14 +2,13 @@ package modbus
 
 import (
 	"encoding/binary"
-	"errors"
 	"fmt"
 	"math"
 )
 
 func ToInt16Array(bytes []byte) []int16 {
 	if len(bytes)%2 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 2*N byte)")))
+		ERROR.Println("cannot be typed (want: 2*N byte)")
 		return nil
 	}
 
@@ -24,7 +23,7 @@ func ToInt16Array(bytes []byte) []int16 {
 
 func ToUint16Array(bytes []byte) []uint16 {
 	if len(bytes)%2 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 2*N byte)")))
+		ERROR.Println("cannot be typed (want: 2*N byte)")
 		return nil
 	}
 
@@ -39,7 +38,7 @@ func ToUint16Array(bytes []byte) []uint16 {
 
 func ToInt32Array(bytes []byte) []int32 {
 	if len(bytes)%4 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 4*N byte)")))
+		ERROR.Println("cannot be typed (want: 4*N byte)")
 		return nil
 	}
 
@@ -54,7 +53,7 @@ func ToInt32Array(bytes []byte) []int32 {
 
 func ToUint32Array(bytes []byte) []uint32 {
 	if len(bytes)%4 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 4*N byte)")))
+		ERROR.Println("cannot be typed (want: 4*N byte)")
 		return nil
 	}
 
@@ -69,7 +68,7 @@ func ToUint32Array(bytes []byte) []uint32 {
 
 func ToInt64Array(bytes []byte) []int64 {
 	if len(bytes)%8 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 8*N byte)")))
+		ERROR.Println("cannot be typed (want: 8*N byte)")
 		return nil
 	}
 
@@ -84,7 +83,7 @@ func ToInt64Array(bytes []byte) []int64 {
 
 func ToUint64Array(bytes []byte) []uint64 {
 	if len(bytes)%8 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 8*N byte)")))
+		ERROR.Println("cannot be typed (want: 8*N byte)")
 		return nil
 	}
 
@@ -99,7 +98,7 @@ func ToUint64Array(bytes []byte) []uint64 {
 
 func ToFloat32Array(bytes []byte) []float32 {
 	if len(bytes)%4 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 4*N byte)")))
+		ERROR.Println("cannot be typed (want: 4*N byte)")
 		return nil
 	}
 
@@ -114,7 +113,7 @@ func ToFloat32Array(bytes []byte) []float32 {
 
 func ToFloat64Array(bytes []byte) []float64 {
 	if len(bytes)%8 != 0 {
-		NewLogger().Error(errors.New(("cannot be typed (want: 8*N byte)")))
+		ERROR.Println("cannot be typed (want: 8*N byte)")
 		return nil
 	}
 
